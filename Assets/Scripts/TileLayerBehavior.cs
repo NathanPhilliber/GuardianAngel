@@ -77,7 +77,7 @@ public class TileLayerBehavior : MonoBehaviour {
 	}
 
 	void Update(){
-		
+		/*
 		//Debug test code to test movement
 		if (Time.frameCount % 25 == 0) {
 			
@@ -95,9 +95,12 @@ public class TileLayerBehavior : MonoBehaviour {
 				for (int i = 0; i < m; i++) {
 					temp.Add ((GameObject)Instantiate (GameMasterBehavior.tilePalete [3], Vector3.zero, Quaternion.identity));
 				}
-				MoveEdgeTiles (r, temp);*/
+				MoveEdgeTiles (r, temp);
 			}
-		}
+			
+
+		}*/
+
 
 	}
 
