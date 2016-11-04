@@ -24,7 +24,7 @@ public class TargetTriggerBehavior : MonoBehaviour {
 		directionChangeCooldown++;
 	}
 
-	//problem is that when west is updated north/south is immediately retriggered
+
 
 	void OnTriggerExit(Collider other){
 		if (other.CompareTag ("Path")) {

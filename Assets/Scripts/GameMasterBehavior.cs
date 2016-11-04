@@ -16,9 +16,12 @@ public class GameMasterBehavior : MonoBehaviour {
 
 	public static float speed = 0.5f;
 
+	public static int GLOBAL_TILE_WIDTH = 10;
+
 	//Array of all tiles. ID = index
 	public static GameObject[] tilePalete;
 	public GameObject[] tilePaleteLoader;
+	public TileLayerBehavior[] tileLayers;
 
 
 	// Use this for initialization
@@ -39,5 +42,11 @@ public class GameMasterBehavior : MonoBehaviour {
 	void Update () {
 
 
+	}
+
+	public void MoveEverything(int dir){
+		for (int i = 0; i < tileLayers.GetLength (0); i++) {
+			tileLayers [i].Move (dir);
+		}
 	}
 }

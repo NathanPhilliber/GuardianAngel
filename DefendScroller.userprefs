@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TargetBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TileLayerBehavior.cs">
     <Files>
-      <File FileName="Assets/Scripts/TileLayerBehavior.cs" Line="118" Column="4" />
+      <File FileName="Assets/Scripts/TileLayerBehavior.cs" Line="82" Column="78" />
       <File FileName="Assets/Scripts/TileBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameMasterBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TargetBehavior.cs" Line="24" Column="3" />
-      <File FileName="Assets/Scripts/TargetTriggerBehavior.cs" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/GameMasterBehavior.cs" Line="49" Column="30" />
+      <File FileName="Assets/Scripts/TargetBehavior.cs" Line="33" Column="3" />
+      <File FileName="Assets/Scripts/TargetTriggerBehavior.cs" Line="27" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

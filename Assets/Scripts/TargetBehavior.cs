@@ -7,21 +7,51 @@ public class TargetBehavior : MonoBehaviour {
 	public int direction = -1;
 	public Collider north;
 	public Collider south;
+	public GameMasterBehavior gameMaster;
+
+	public int x;
+	public int z;
+	int oldX;
+	int oldZ;
 
 
 	// Use this for initialization
 	void Start () {
-		
+		x = (int)gameObject.transform.position.x;
+		z = (int)gameObject.transform.position.z;
+		oldX = x;
+		oldZ = z;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		MoveInCorrectDirection ();
+		UpdateMapIfNeeded ();
+	}
+
+	void UpdateMapIfNeeded(){
+		
+
+		if (Mathf.Abs (oldX - x) > GameMasterBehavior.GLOBAL_TILE_WIDTH) {
+
+			if(oldX-x>0){
+				gameMaster.MoveEverything (GameMasterBehavior.NORTH);
+			}
+			else{
+				gameMaster.MoveEverything (GameMasterBehavior.SOUTH);
+			}
+			oldX = x;
+			//Move tile map
+
+		}
+		if (Mathf.Abs (oldZ - z) > GameMasterBehavior.GLOBAL_TILE_WIDTH) {
+			oldZ = z;
+			//Move tile map
+			gameMaster.MoveEverything (GameMasterBehavior.EAST);
+		}
 	}
 
 	void MoveInCorrectDirection(){
-
-
 
 		if (TargetTriggerBehavior.eastTriggered) {
 			direction = GameMasterBehavior.EAST;
@@ -55,6 +85,9 @@ public class TargetBehavior : MonoBehaviour {
 			transform.Translate (new Vector3(speed,0,0));
 			break;
 		}
+
+		x = (int)gameObject.transform.position.x;
+		z = (int)gameObject.transform.position.z;
 	}
 
 
