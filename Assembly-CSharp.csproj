@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameMasterBehavior.cs" />
      <Compile Include="Assets\Scripts\TargetBehavior.cs" />
+     <Compile Include="Assets\Scripts\TargetTriggerBehavior.cs" />
      <Compile Include="Assets\Scripts\TileBehavior.cs" />
      <Compile Include="Assets\Scripts\TileLayerBehavior.cs" />
  <Reference Include="UnityEngine.UI">
