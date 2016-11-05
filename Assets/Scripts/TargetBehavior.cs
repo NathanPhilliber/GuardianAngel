@@ -31,8 +31,7 @@ public class TargetBehavior : MonoBehaviour {
 
 	void UpdateMapIfNeeded(){
 		
-
-		if (Mathf.Abs (oldX - x) > GameMasterBehavior.GLOBAL_TILE_WIDTH) {
+		if (Mathf.Abs (oldX - x) >= GameMasterBehavior.GLOBAL_TILE_WIDTH) {
 
 			if(oldX-x>0){
 				gameMaster.MoveEverything (GameMasterBehavior.NORTH);
@@ -44,7 +43,7 @@ public class TargetBehavior : MonoBehaviour {
 			//Move tile map
 
 		}
-		if (Mathf.Abs (oldZ - z) > GameMasterBehavior.GLOBAL_TILE_WIDTH) {
+		if (Mathf.Abs (oldZ - z) >= GameMasterBehavior.GLOBAL_TILE_WIDTH) {
 			oldZ = z;
 			//Move tile map
 			gameMaster.MoveEverything (GameMasterBehavior.EAST);

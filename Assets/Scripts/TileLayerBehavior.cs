@@ -11,21 +11,21 @@ using System.Collections.Generic;
 public class TileLayerBehavior : MonoBehaviour {
 
 	//Multidimensional array for initial tiles
-	private short[,] idMap;
+	protected short[,] idMap;
 
 	//The width of a tile
 	public int tileWidth = GameMasterBehavior.GLOBAL_TILE_WIDTH;
 
-	public int layerNum = 0;
+	public int yOffset = 0;
 
-	private List<GameObject> tiles;
+	protected List<GameObject> tiles;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
 
 		tiles = new List<GameObject> ();
 
-		if (layerNum == 0) {
+
 			idMap = new short[,] {
 				{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1,1,1,1,1},
 				{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1 ,1,1,1,1,1},
@@ -53,35 +53,7 @@ public class TileLayerBehavior : MonoBehaviour {
 				{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1,1,1,1,1},
 				{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1,1,1,1,1}
 			};
-		} else if (layerNum == 1) {
-			idMap = new short[,] {
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,3,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,3,-1,-1,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,3,-1,3,3},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,-1,3,-1},
-				{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,-1}
-			} ;
-		}
+		
 			
 		RebuildTileMap ();
 	}
@@ -93,11 +65,11 @@ public class TileLayerBehavior : MonoBehaviour {
 	/*
 	 * Builds the tile layer from idMap array. Should only call once.
 	 */ 
-	void RebuildTileMap(){
+	protected void RebuildTileMap(){
 		for (int x = 0; x < idMap.GetLength(0); x++) {
 			for (int z = 0; z < idMap.GetLength (1); z++) {
 				if (idMap [x, z] >= 0) {
-					GameObject tile = (GameObject)Instantiate (GameMasterBehavior.tilePalete [idMap [x, z]], new Vector3 (x * tileWidth - idMap.GetLength (0) / 2 * tileWidth, layerNum, z * tileWidth - idMap.GetLength (1) / 2 * tileWidth), Quaternion.identity);
+					GameObject tile = (GameObject)Instantiate (GameMasterBehavior.tilePalete [idMap [x, z]], new Vector3 (x * tileWidth - idMap.GetLength (0) / 2 * tileWidth, yOffset, z * tileWidth - idMap.GetLength (1) / 2 * tileWidth), Quaternion.identity);
 					tiles.Add (tile);
 				}
 			}
@@ -107,26 +79,20 @@ public class TileLayerBehavior : MonoBehaviour {
 	/*
 	 * "Moves" the tile layer in the correct direction. Handles terrain generation. 
 	 */
-	public void Move(int dir){
+	public virtual void Move(int dir){
 
 
 		// FOR NOW IT'S RANDOM TILE GENERATION 
 		// TO DO: ACTUAL LAND GENERATION
 		int m = idMap.GetLength(1);
 
-		if (layerNum == 0) {
+
 			List<GameObject> temp = new List<GameObject> ();
 			for (int i = 0; i < m; i++) {
 				temp.Add ((GameObject)Instantiate (GameMasterBehavior.tilePalete [Random.Range (1, 3)], Vector3.zero, Quaternion.identity));
 			}
 			MoveEdgeTiles (dir, temp);
-		} else if (layerNum == 2) {
-			List<GameObject> temp = new List<GameObject> ();
-			for (int i = 0; i < m; i++) {
-				temp.Add ((GameObject)Instantiate (GameMasterBehavior.tilePalete [3], Vector3.zero, Quaternion.identity));
-			}
-			MoveEdgeTiles (dir, temp);
-		}
+		
 	}
 
 	/*
