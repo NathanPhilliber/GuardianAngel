@@ -37,13 +37,8 @@ public class GameMasterBehavior : MonoBehaviour {
 		}
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-
-	}
-
+	//Call all tile layer move methods
 	public void MoveEverything(int dir){
 		for (int i = 0; i < tileLayers.GetLength (0); i++) {
 			tileLayers [i].Move (dir);

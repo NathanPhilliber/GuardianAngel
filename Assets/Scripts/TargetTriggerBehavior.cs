@@ -5,27 +5,13 @@ public class TargetTriggerBehavior : MonoBehaviour {
 
 	public TargetBehavior parent;
 	public int direction;
-	public Collider other1;
-	public Collider other2;
-	int directionChangeCooldown;
-	public int directionChangeCoolDownMin;
+	public Collider other1; //Top colllider
+	public Collider other2; //Next collider
 	public static bool eastTriggered;
 	public static bool northTriggered;
 	public static bool southTriggered;
 
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		directionChangeCooldown++;
-	}
-
-
-
+	//Update direction booleans
 	void OnTriggerExit(Collider other){
 		if (other.CompareTag ("Path")) {
 			if (direction == GameMasterBehavior.NORTH) {
@@ -40,10 +26,8 @@ public class TargetTriggerBehavior : MonoBehaviour {
 	}
 
 
-
+	//Update direction booleans
 	void OnTriggerStay(Collider other){
-		
-		//tell mommy that you got hit
 
 		if (other.CompareTag ("Path")) {
 			

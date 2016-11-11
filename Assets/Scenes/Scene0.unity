@@ -135,7 +135,6 @@ MonoBehaviour:
   direction: 1
   other1: {fileID: 1010391035}
   other2: {fileID: 1940919148}
-  directionChangeCoolDownMin: 0
 --- !u!65 &63319457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -283,7 +282,6 @@ MonoBehaviour:
   direction: 0
   other1: {fileID: 63319457}
   other2: {fileID: 1940919148}
-  directionChangeCoolDownMin: 20
 --- !u!65 &1010391035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -530,7 +528,6 @@ MonoBehaviour:
   direction: 2
   other1: {fileID: 1010391035}
   other2: {fileID: 63319457}
-  directionChangeCoolDownMin: 20
 --- !u!65 &1940919148
 BoxCollider:
   m_ObjectHideFlags: 0

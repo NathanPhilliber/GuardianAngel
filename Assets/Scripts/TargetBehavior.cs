@@ -50,6 +50,7 @@ public class TargetBehavior : MonoBehaviour {
 		}
 	}
 
+	//Move in the appropriate direction based on the direction booleans
 	void MoveInCorrectDirection(){
 
 		if (TargetTriggerBehavior.eastTriggered) {

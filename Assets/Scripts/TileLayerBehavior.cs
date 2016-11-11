@@ -58,10 +58,6 @@ public class TileLayerBehavior : MonoBehaviour {
 		RebuildTileMap ();
 	}
 
-	void Update(){
-		
-	}
-
 	/*
 	 * Builds the tile layer from idMap array. Should only call once.
 	 */ 
